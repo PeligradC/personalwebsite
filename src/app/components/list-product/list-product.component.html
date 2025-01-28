@@ -1,19 +1,7 @@
 <div class="container mt-5">
     <div class="product">
-        <div class="product-list">
-            <img src="https://res.cloudinary.com/dwk2h14fw/image/upload/v1724861343/l5i0nfzt8lfr4wyuvvpb.jpg" alt="" class="product-img"
-            data-bs-target="#staticBackdrop" data-bs-toggle="modal">
-        </div>
-        <div class="product-list">
-            <img src="https://res.cloudinary.com/dwk2h14fw/image/upload/v1724861343/l5i0nfzt8lfr4wyuvvpb.jpg" alt="" class="product-img"
-            data-bs-target="#staticBackdrop" data-bs-toggle="modal">
-        </div>
-        <div class="product-list">
-            <img src="https://res.cloudinary.com/dwk2h14fw/image/upload/v1724861343/l5i0nfzt8lfr4wyuvvpb.jpg" alt="" class="product-img"
-            data-bs-target="#staticBackdrop" data-bs-toggle="modal">
-        </div>
-        <div class="product-list">
-            <img src="https://res.cloudinary.com/dwk2h14fw/image/upload/v1724861343/l5i0nfzt8lfr4wyuvvpb.jpg" alt="" class="product-img"
+        <div *ngFor="let product of products" class="product-list">
+            <img src={{product.product}} alt="" class="product-img"
             data-bs-target="#staticBackdrop" data-bs-toggle="modal">
         </div>
     </div>
