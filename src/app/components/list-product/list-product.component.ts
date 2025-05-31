@@ -16,7 +16,7 @@ export class ListProductComponent implements OnInit {
   products: any = [];
   productData!: any;
   isModalVisible: boolean | undefined;
-
+  visited: boolean = false;
   constructor(
     private service: ProductService,
     private router: Router // Inject Router
@@ -25,16 +25,17 @@ export class ListProductComponent implements OnInit {
   ngOnInit() {
     this.displayProduct();
     this.isModalVisible = false;
-    const hasVisitedSession = sessionStorage.getItem('hasVisitedSession');
-    if (!hasVisitedSession) {
+    console.log(this.service.visited)
+ 
+   if (!this.service.visited) {
       // Set the flag indicating the user has now visited this session
-      sessionStorage.setItem('hasVisitedSession', 'true');
+      this.service.visited = true
 
       // Redirect to /add-product
       this.router.navigate(['/add-product']).then(() => {
-        // Immediately navigate back to / after the first navigation completes
+    
         this.router.navigate(['/']);
-      });
+      })
     }
   }
 

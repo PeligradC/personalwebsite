@@ -9,7 +9,7 @@ import { environment } from '../../../environment/environment';
 export class ProductService {
 
   constructor(private http: HttpClient) { }
-
+  visited : boolean = false
   getProduct()
   {
     //console.log(`${environment.baseURL}`)
