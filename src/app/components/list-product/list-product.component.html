@@ -1,8 +1,12 @@
 <div class="container mt-5">
     <div class="product">
         <div *ngFor="let product of products" class="product-list">
-            <img src={{product.product}} alt="" class="product-img"
-            data-bs-target="#staticBackdrop" data-bs-toggle="modal">
+            <img src={{product.product}} alt="" class="product-img" width="140" height="140"
+            data-bs-target="#staticBackdrop" data-bs-toggle="modal" (click)="modalData(product)">
         </div>
     </div>
 </div>
+
+<div *ngIf="isModalVisible">
+    <app-modal [product]="productData" (close)="isModalVisible = false"></app-modal>
+  </div>
