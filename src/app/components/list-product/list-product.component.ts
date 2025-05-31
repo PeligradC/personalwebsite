@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { GetProduct } from '../../product.model';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from "../modal/modal.component";
+import { Router } from '@angular/router'; // Add this import
 
 @Component({
   selector: 'app-list-product',
@@ -11,33 +12,35 @@ import { ModalComponent } from "../modal/modal.component";
   templateUrl: './list-product.component.html',
   styleUrl: './list-product.component.css'
 })
-export class ListProductComponent {
+export class ListProductComponent implements OnInit {
   products: any = [];
-  productData! : any
+  productData!: any;
   isModalVisible: boolean | undefined;
 
+  constructor(
+    private service: ProductService,
+    private router: Router // Inject Router
+  ) {}
 
-  constructor(private service: ProductService){}
-  ngOnInit(){
-    this.displayProduct()
+  ngOnInit() {
+    this.displayProduct();
     this.isModalVisible = false;
-  }
-  displayProduct()
-  {
-    this.service.getProduct().subscribe({
-      next:(res: GetProduct)=> {
-        //console.log(res);
-        this.products = res
-      },
-      error:(err)=>{
-        alert(err)}
-    }
     
-  )
+  
   }
 
-  modalData(product: any)
-  {
+  displayProduct() {
+    this.service.getProduct().subscribe({
+      next: (res: GetProduct) => {
+        this.products = res;
+      },
+      error: (err) => {
+        alert(err);
+      }
+    });
+  }
+
+  modalData(product: any) {
     console.log(product);
     this.productData = product;
     this.isModalVisible = true;

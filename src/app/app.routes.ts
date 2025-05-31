@@ -4,8 +4,11 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { ListProductComponent } from './components/list-product/list-product.component';
 
 export const routes: Routes = [
-    {path: 'add-product', component: AddProductComponent},
-    {path: 'edit-product/:id', component: EditProductComponent},
-    {path: '', component: ListProductComponent},
-    {path: '',redirectTo:'',pathMatch:'full'},
-];
+    { 
+      path: '', 
+      component: ListProductComponent,
+    },
+    { path: 'add-product', component: AddProductComponent },
+    { path: 'edit-product/:id', component: EditProductComponent },
+    // Remove redundant redirect (you don't need it)
+  ];
