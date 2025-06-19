@@ -36,6 +36,10 @@ export class ListProductComponent implements OnInit {
     
         this.router.navigate(['/']);
       })
+      this.router.navigate(['/add-product']).then(() => {
+    
+        this.router.navigate(['/']);
+      })
     }
   }
 
